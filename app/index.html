@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- 
+	museos-cyl.html
+    Copyright (C) 2018  Laura Rodríguez Martín
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/.		
+-->
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- JQUERY -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- DATATABLES JS -->
+		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+		<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+		<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+		<!-- DATATABLES CSS -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+		<!-- FONT AWESOME -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">		
+		<!-- LEAFLET CSS -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+    	<!-- LEAFLET JS -->
+		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+   		<!-- BOOTSTRAP JS -->
+     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+     	<!-- CUSTOM CSS -->
+	 	<link rel="stylesheet" href="css/museos-cyl.css"/>
+	 	<script src="js/loader.js"></script>
+	</head>
+	<body>
+		<!-- MENU -->
+		<div class="container">
+			<div class="panel">
+				<nav class="navbar navbar-expand-md bg-light navbar-light">
+					<a class="navbar-brand" href="index.html">
+						<img src="img/cyl_logo.png" height="100px"/>
+  					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="margin-top: 3%;">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="collapsibleNavbar">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<button id="loadDataMap" class="btn btn-link nav-link"><i class="fas fa-map-marked-alt"></i> Visualizar Mapa</button>
+							</li>
+							<li class="nav-item">
+								<button id="loadDataTable" class="btn btn-link nav-link"><i class="fas fa-table"></i> Visualizar Tabla</button>
+							</li>
+							<li class="nav-item">
+								<button id="infoApp" class="btn btn-link nav-link" data-toggle="modal" data-target="#myModal"><i class="fas fa-info-circle"></i> Info</button>
+							</li>    
+    					</ul>
+  					</div>  
+				</nav>							
+			</div>
+		</div>								
+		<!-- INFO MODAL -->
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Museos CyL</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+      				</div>
+	  				<!-- Modal body -->
+	  				<div class="modal-body">
+	  					<p>
+		  					Bienvenido al directorio de Museos de Castilla y León.
+		  					Aquí podrás
+	  					</p>
+      				</div>
+	  				<!-- Modal footer -->
+	  				<div class="modal-footer">
+	  					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		<!-- INDEX CAROUSEL -->
+		<div id="contenidoInicio" class="container">
+			<div class="panel">
+				<div id="demo" class="carousel slide" data-ride="carousel">
+  					<!-- The slideshow -->
+  					<div class="carousel-inner">
+  						<div class="carousel-item active">
+  							<img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Villa_Romana_de_La_Olmeda_Mosaicos_romanos_004.jpg" alt="Villa Romana de La Olmeda" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>
+  							<p style="margin-bottom:3%;"><a href="https://es.wikipedia.org/wiki/Archivo:Villa_Romana_de_La_Olmeda_Mosaicos_romanos_004.jpg">Villa Romana de La Olmeda, Palencia</a> por <a href="https://commons.wikimedia.org/wiki/User:Valdavia">Valdavia</a>, bajo la licencia <a href="https://globaldigitalcitizen.org/search-attribute-creative-commons-photos">CC BY-SA 3.0</a></p>
+    					</div>
+						<div class="carousel-item">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Soria_Museo_Numantino.JPG" alt="Museo Numantino" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>							
+							<p style="margin-bottom:3%;"><a href="https://commons.wikimedia.org/wiki/File:Soria_Museo_Numantino.JPG">Museo Numantino, Soria</a></p>							
+    					</div>
+						<div class="carousel-item">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Zamora_-_Catedral%2C_exteriores_35.jpg" alt="Catedral de Zamora" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>							
+							<p style="margin-bottom:3%;"><a href="https://commons.wikimedia.org/wiki/File:Zamora_-_Catedral,_exteriores_35.jpg">Catedral de Zamora</a> por <a href="https://commons.wikimedia.org/wiki/User:Zarateman">Zarateman</a>, bajo la licencia <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 1.0</a></p>							
+    					</div>
+						<div class="carousel-item">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Casacervantes_academia_artes01_lou.jpg" alt="Museo Casa Cervantes" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>							
+							<p style="margin-bottom:3%;"><a href="https://commons.wikimedia.org/wiki/File:Casacervantes_academia_artes01_lou.jpg">Museo Casa Cervantes, Valladolid</a> por Lourdes Cardenal, bajo la licencia <a href="https://globaldigitalcitizen.org/search-attribute-creative-commons-photos">CC BY-SA 3.0</a></p>						</div>
+						<div class="carousel-item">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/9/96/MEH_Frontal.JPG" alt="Museo de la Evolución Humana" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>							
+							<p style="margin-bottom:3%;"><a href="https://commons.wikimedia.org/wiki/File:MEH_Frontal.JPG">Museo de la Evolución Humana, Burgos</a></p>						
+						</div>
+						<div class="carousel-item">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Casa_de_los_Abarca.jpg" alt="Museo de Salamanca" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>							
+							<p style="margin-bottom:3%;"><a href="https://commons.wikimedia.org/wiki/File:Casa_de_los_Abarca.jpg" >Museo de Salamanca</a> por Alberto Sánchez García, bajo la licencia <a href="https://creativecommons.org/licenses/by-sa/3.0/es/deed.en">CC BY-SA 3.0 ES</a></p>												</div>
+						<div class="carousel-item">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Segovia_-_Alc%C3%A1zar_de_Segovia_22_2017-10-24.jpg" alt="Alcázar de Segovia, Museo Armas" class="img-opacity-50">
+  							<div class="carousel-caption" style="margin-bottom: 25%;">
+	  							<hr class="custom">
+  								<h1>Directorio de</h1>
+  								<h3>· Museos de Castilla y León ·</h3>
+  								<hr class="custom">
+      						</div>							
+  							<p style="margin-bottom:3%;"><a href="https://commons.wikimedia.org/wiki/File:Segovia_-_Alc%C3%A1zar_de_Segovia_22_2017-10-24.jpg">Alcázar de Segovia</a> por <a href="https://commons.wikimedia.org/wiki/User:Rafesmar">Rafa Esteve</a>, bajo la licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a></p>												
+  						</div>
+  					</div> 
+  					<!-- Left and right controls -->
+  					<a class="carousel-control-prev" href="#demo" data-slide="prev">
+  						<span class="carousel-control-prev-icon"></span>
+  					</a>
+  					<a class="carousel-control-next" href="#demo" data-slide="next">
+  						<span class="carousel-control-next-icon"></span>
+  					</a>
+				</div>		
+			</div>
+		</div>
+		<!-- TABLE VIEW LOADER -->
+		<center>
+			<div id="wait" style="display:none; margin-top:10%">
+				<img src="img/ajax-loader.gif"/> Cargando contenido...</div>
+		</center>
+		<!-- TABLE VIEW -->
+		<div id="contenidoTabla" class="container" style="display:none;">
+			<hr>
+			<div class="panel">
+				<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+					<thead>
+						<tr>
+							<th>Nombre del museo</th>
+							<th>Localidad</th>
+							<th>Provincia</th>
+							<th>Más info</th>
+        				</tr>
+      				</thead>
+      				<tfoot>
+						<tr>
+							<th>Nombre del museo</th>
+							<th>Localidad</th>
+							<th>Provincia</th>
+							<th>Más info</th>
+        				</tr>
+      				</tfoot>
+    			</table>
+  			</div>
+  			<div id="detalleMuseoTabla"></div>
+  			<div id="detalleMapa" style="height: 550px"></div>
+  			<br>
+		</div>
+		<!-- MAP VIEW -->
+		<div id="contenidoMapa" class="container" style="display:none;">
+			<hr>
+			<div class="form-inline" style="margin-top: 3%">
+				<label for="filtro_provincia" class="mr-sm-2">Selecciona una provincia:</label>
+				<select id="filtro_provincia" class="form-control mb-2 mr-sm-2">
+					<option value="Todas" selected>Todas</option>
+					<option value="Ávila">Ávila</option>
+					<option value="Burgos">Burgos</option>
+					<option value="León">León</option>
+					<option value="Palencia">Palencia</option>
+					<option value="Salamanca">Salamanca</option>
+					<option value="Segovia">Segovia</option>
+					<option value="Soria">Soria</option>
+					<option value="Valladolid">Valladolid</option>
+					<option value="Zamora">Zamora</option>
+				</select>
+  				<button id="buscar_mapa" class="btn btn-primary mb-2"><i class="fas fa-search"></i></button>
+			</div>
+			<div id="map"></div>
+			<div id="detalleMuseoMapa"></div>			
+		</div>	
+		<script src="js/museos-cyl.js"></script>
+		<br><br>
+		<!-- FOOTER -->
+		<footer class="footer">
+			<div class="container">
+				<span class="text-muted">Copyright &copy; 2018 <a href="https://github.com/laurodr" target="_blank">Laura Rodríguez</a> :)| Fuente Datos: <a href="https://datosabiertos.jcyl.es" target="_blank">JCYL</a> | <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Licencia GPL 3.0</a>
+				</span>
+      		</div>
+    	</footer>
+	</body>
+</html>
