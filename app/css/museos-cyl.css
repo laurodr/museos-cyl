@@ -44,43 +44,16 @@ body {
 .btn-active{
 	border-bottom: 5px solid #007bff;
 }
-.carousel-inner img {
-	width: 100%;
-}
-
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  	.carousel-inner img {
-  		height: 100%;
-    }	
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-	.carousel-inner img {
-  		height: 100%;
-    }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  	.carousel-inner img {
-  		height: 500px;
-    }	
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  	.carousel-inner img {
-  		height: 500px;
-    }	
-}
-			
-.carousel-caption {
-  	top: 0;
-  	bottom: auto;
-}
 hr.custom {
 	border: 3px solid white;
+}
+.text-block {
+	position: absolute;
+	bottom: 50%;
+	right: 25%;
+	background-color: transparent;
+	color: white;
+	padding-left: 100px;
+	padding-right: 100px;
+	text-align: center;
 }
