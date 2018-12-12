@@ -56,12 +56,6 @@ body {
   	.carousel-inner img {
   		height: 100%;
     }
-}
-
-@media only screen and (max-width: 900px) {
-  	img {
-  		height: 500px;
-    }
 }			
 .carousel-caption {
   	top: 0;
