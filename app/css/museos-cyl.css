@@ -53,4 +53,11 @@ hr.custom {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: white;
+	text-align: center;
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+	.text-block{
+		display: none;
+	}
 }
